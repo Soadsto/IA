@@ -8,16 +8,13 @@ def es_solucion(a, k, n):
     global kg 
     return 0 == n and k == kg #si la suma es igual a n y los sumandos son los deseados
 
-
 def show_solution(a):
     global soluciones
-    #print("PROCESANDO a:", a)
     x = list(a)
     x.sort()
-    #print("x = ", x)
     if x in soluciones: 
         return
-    print("Found it: ",x)    
+    print("Found it: ", x)
     soluciones.append(x)
 
 def crear_candidatos(a, n, cand):
@@ -26,11 +23,8 @@ def crear_candidatos(a, n, cand):
     for elem in posibilidades:
         if n - elem >= 0:
             cand.append(elem)
-    #print("Candidatos: ", cand)
-    #input()
             
 def backtrack(a, k, n):
-    #print("n:", n)
     if es_solucion(a, k, n):
         show_solution(a)
     else:
