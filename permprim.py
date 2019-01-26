@@ -6,27 +6,31 @@ soluciones = []
 def es_solucion(a, k, n):
     #Cantidad de sumandos deseados por el usuario, K es la cantidad de sumandos de la solucion
     global kg 
-    return sum(a) == n and k == kg #si la suma es igual a n y los sumandos son los deseados
+    return 0 == n and k == kg #si la suma es igual a n y los sumandos son los deseados
 
 
 def show_solution(a):
     global soluciones
-    a.sort()
-    a = list(a)
-    if a in soluciones: 
+    #print("PROCESANDO a:", a)
+    x = list(a)
+    x.sort()
+    #print("x = ", x)
+    if x in soluciones: 
         return
-    print(a)    
-    soluciones.append(a)
+    print("Found it: ",x)    
+    soluciones.append(x)
 
 def crear_candidatos(a, n, cand):
     global prims
     posibilidades = prims
-    suma = sum(a)
     for elem in posibilidades:
-        if not elem in a:
+        if n - elem >= 0:
             cand.append(elem)
+    #print("Candidatos: ", cand)
+    #input()
             
 def backtrack(a, k, n):
+    #print("n:", n)
     if es_solucion(a, k, n):
         show_solution(a)
     else:
@@ -35,8 +39,8 @@ def backtrack(a, k, n):
         k = k + 1
         for c in cand:
             a.append(c)
-            if sum(a) <= n:
-                backtrack(a, k, n)
+            if k <= kg:
+                backtrack(a, k, n-c)
             a.pop()
 
 def main():
@@ -44,6 +48,7 @@ def main():
     num = reader.leer() #EL N que vamos a ocupar
     kg = reader.leerK() #La cantidad de sumandos a usar
     prims = reader.primos(num) #Los primos dentro del rango de 2 a N
+    print(prims)
     prims.reverse()
     backtrack([], 0, num)
 
