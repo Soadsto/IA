@@ -14,7 +14,7 @@ def show_solution(a):
     x.sort()
     if x in soluciones: 
         return
-    print("Found it: ", x)
+    #print("Found it: ", x)
     soluciones.append(x)
 
 def crear_candidatos(a, n, cand):
