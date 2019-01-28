@@ -13,7 +13,6 @@ simbolos = [
             "Ag", "Na", "Sr", "S", "Ta", "Tc", "Te", "Tb", "Tl",
             "Th", "Tm", "Sn", "Ti", "W", "U", "V", "Xe", "Y", "Zn"
         ]   
-
 soluciones = 0
 
 def esSolucion(cadena):
@@ -33,7 +32,6 @@ def crearCandidatos(cadena, cand):
         if cadena.find(elem) == 0:
             cand.append(elem)
     
-
 def bactrack(a, cadena):
     if esSolucion(cadena):
         showSolucion(a)
