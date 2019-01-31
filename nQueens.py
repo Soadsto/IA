@@ -1,28 +1,23 @@
 soluciones = 0
 
-def show_solution(a):
-    global soluciones
-    soluciones += 1
-
 def es_solucion(k, n):
     return k == n
 
 def crear_candidatos(a, k, n, cand):
-    c = 0
     for i in range(n):
         legal = True
         for j in range(k):
-            if abs(k-j) == abs (i-a[j]): #AMENAZA EN DIAGONAL
+            if abs(k - j) == abs (i - a[j]): #AMENAZA EN DIAGONAL
                 legal = False
-            if (i == a[j]):              #AMENAZA EN COLUMNA
+            if (i == a[j]):                  #AMENAZA EN COLUMNA
                 legal = False
         if legal:
             cand.append(i)
-            c += 1
 
 def backtrack(a, k, n):
+    global soluciones
     if es_solucion(k, n):
-        show_solution(a)
+        soluciones += 1        
     else:
         cand = [] #aqui se guardan los candidatos
         crear_candidatos(a, k, n, cand)
@@ -31,10 +26,24 @@ def backtrack(a, k, n):
             a.append(c)            
             backtrack(a, k, n)
             a.pop()
+ 
+def leer():
+    while True:
+        try:
+            size = int(input("Tamaño del tablero = "))
+            if size == 1:
+                print("Solucion trivial")
+            if size <= 3:
+                print("No existen soluciones para tableros < 4")
+                continue
+            return size
+        except ValueError:
+            print("Dato invalido. Escribe de nuevo")
 
 def nQueens():
     global soluciones
-    backtrack([], 0, 10)
-    print("10 = n , Soluciones: ", soluciones)
+    n =  leer()
+    backtrack([], 0, n)
+    print("Soluciones: ",soluciones)
 
 nQueens()
