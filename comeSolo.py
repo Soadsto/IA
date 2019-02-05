@@ -1,0 +1,3 @@
+posiciones = [
+    1, 
+] 

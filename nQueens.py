@@ -7,9 +7,9 @@ def crear_candidatos(a, k, n, cand):
     for i in range(n):
         legal = True
         for j in range(k):
-            if abs(k - j) == abs (i - a[j]): #AMENAZA EN DIAGONAL
+            if abs(k - j) == abs(i - a[j]): #AMENAZA EN DIAGONAL
                 legal = False
-            if (i == a[j]):                  #AMENAZA EN COLUMNA
+            if i == a[j]:                  #AMENAZA EN COLUMNA
                 legal = False
         if legal:
             cand.append(i)
