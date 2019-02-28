@@ -1,7 +1,7 @@
 #pkg load image
-img = imread()
+img = imread("bob.jpg");
 imshow(img)
-title("Imagen en color")
+title("Imagen en color");
 pause(4)
 gris = rgb2gray(img);
 imshow(gris)
@@ -21,5 +21,5 @@ title("En blanco y negro con umbral");
 pause(3)
 tmp = conv2 (gris, ones (5, 5) / 25, "same");
 tmp2 = uint8(tmp);
-imshow(tmp2);
+imshow(tmp2)
 title("Imagen suavizada con filtro 5*5");
